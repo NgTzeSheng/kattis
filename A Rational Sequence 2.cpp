@@ -20,7 +20,6 @@
 // i.e. Starting at 1 (root), it will either (1 * 2) or (1 * 2 + 1), up until the rational number, thereby getting it's number sequence.
 
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
