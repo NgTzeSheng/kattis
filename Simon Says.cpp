@@ -19,7 +19,7 @@ int main()
         string command;
         getline(cin, command);  // getline() will read up to the \n char (not including) and store 
                                 // the \n is then discarded from the input stream.
-        if (command.compare(0, 11, prefix) == 0) {
+        if (command.compare(0, 11, prefix) == 0) {      // here, compare(index char of *this, how many chars to compare, compare with which str)
             for (string::iterator i = command.begin() + 11; i != command.end(); i++) {
                 cout << *i;
             }
