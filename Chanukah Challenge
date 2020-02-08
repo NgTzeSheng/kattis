@@ -1,0 +1,22 @@
+// Arithmetic Progression
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    int p;
+    cin >> p;
+    
+    for (int i = 0; i < p; i++) {
+        int k, n;
+        cin >> k >> n;
+        
+        n = (n * (n + 1) / 2) + n; // an additional n for the extra candle each evening
+
+        cout << k << ' ' << n << endl;
+    }
+    
+    return 0;
+}
