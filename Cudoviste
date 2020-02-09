@@ -1,0 +1,62 @@
+// First we store the input map into a vector.
+// We then cycle through the vector, a parking lot at a time (2 x 2).
+// If the lot has a building(#), we discard the lot as we cannot park there.
+// Else, we count the number of cars(X) squashed, and add a count to an array. (the index of the array represents num of cars squashed)
+// Finally, we output the array.
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    
+    int r, c;
+    cin >> r >> c;
+    
+    vector<char> row(c, ' ');                 // creating our vector
+    vector<vector<char> > city_map(r, row);
+    
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            char x;
+            cin >> x;
+            city_map[i][j] = x;               // storing the city map in the vector
+        }
+    }
+    
+    int squash[5] = {0};          // array to keep track of cars squashed.
+                                  // squash[n] will give the number of lots which squash n cars.
+    for (int i = 0; i < r - 1; i++) {
+        for (int j = 0; j < c - 1; j++) {
+            char lot[4] = {0};
+            lot[0] = city_map[i][j];
+            lot[1] = city_map[i][j + 1];
+            lot[2] = city_map[i + 1][j];
+            lot[3] = city_map[i + 1][j + 1];      // here, we are looping through the map a lot at a time
+            
+            int count = 0;
+            for (int k = 0; k < 4; k++) {
+                switch (lot[k]) {                 // using a switch expression to determine lot.
+                    case '#':
+                        count = 5;    // we set count = 5 to void the count in the expression below (line 51)
+                        break;
+                    case 'X':
+                        count++;
+                        break;
+                    case '.':
+                        break;
+                }
+            }
+            if (count < 5) {
+                squash[count]++;    
+            }
+        }
+    }
+    
+    for (int l = 0; l < 5; l++) {
+        cout << squash[l] << endl;
+    }
+    
+    return 0;
+}
